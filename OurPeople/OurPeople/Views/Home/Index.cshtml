@@ -1,0 +1,15 @@
+﻿@using React.AspNet
+@using React.RenderFunctions
+@using OurPeople.Controllers
+@using React.Router
+@model HomeController.IndexViewModel
+
+@{ Layout = "_Layout";
+    var helmetFunctions = new ReactHelmetFunctions();
+    ViewBag.HelmetTitle = helmetFunctions.RenderedHelmet?.GetValueOrDefault("title"); }
+
+@Html.ReactRouter("Components.RootComponent", new
+{
+    initialPeople = Model.People,
+    page = Model.Page
+})
